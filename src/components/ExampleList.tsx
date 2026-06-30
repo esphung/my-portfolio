@@ -15,7 +15,8 @@ export type ExampleListItem = {
   title: string;
   description: string;
   thumbnailUrl?: string;
-  url?: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
   children?: ExampleListItem[];
 };
 
@@ -74,11 +75,6 @@ const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
                 <Text numberOfLines={3} style={styles.childDescription}>
                   {child.description}
                 </Text>
-                {child.url ? (
-                  <Text numberOfLines={1} style={styles.childUrl}>
-                    {child.url}
-                  </Text>
-                ) : null}
               </View>
             </Pressable>
           ))}

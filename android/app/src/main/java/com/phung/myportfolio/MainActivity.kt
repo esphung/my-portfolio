@@ -1,4 +1,4 @@
-package com.myportfolio
+package com.phung.myportfolio
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
