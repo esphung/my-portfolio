@@ -106,7 +106,7 @@ export const caseStudies: CaseStudy[] = [
     images: [
       {
         imageUrl: 'https://i.postimg.cc/J4VcTJyp/Webview-Injection.png',
-        aspectRatio: 670 / 800,
+        aspectRatio: 1280 / 900,
         sectionId: 'whatIMade',
         id: 'webview-injection',
         caption: 'Example of WebView injection for session token management.',
