@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import ScreenWrapper from '../components/ScreenWrapper';
-import ImagePreviewModal from '../components/ImagePreviewModal';
 import { colors } from '../theme/colors';
 import type {
   CaseStudy,
@@ -27,7 +26,6 @@ type DetailSectionProps = {
   body?: string;
   images?: CaseStudyImage[];
   items?: string[];
-  onImagePress: (image: CaseStudyImage) => void;
 };
 
 const DetailSection = ({
@@ -35,7 +33,6 @@ const DetailSection = ({
   body,
   images,
   items,
-  onImagePress,
 }: DetailSectionProps) => (
   <View style={styles.section}>
     <Text style={styles.sectionTitle}>{title}</Text>
@@ -53,15 +50,8 @@ const DetailSection = ({
     {images?.length ? (
       <View style={styles.imageList}>
         {images.map(image => (
-          <Pressable
-            accessibilityLabel={
-              image.caption
-                ? `Preview image: ${image.caption}`
-                : 'Preview case study image'
-            }
-            accessibilityRole="imagebutton"
+          <View
             key={image.id}
-            onPress={() => onImagePress(image)}
             style={styles.imageFrame}
           >
             <Image
@@ -75,7 +65,7 @@ const DetailSection = ({
             {image.caption ? (
               <Text style={styles.imageCaption}>{image.caption}</Text>
             ) : null}
-          </Pressable>
+          </View>
         ))}
       </View>
     ) : null}
@@ -86,10 +76,6 @@ const CaseStudyDetailsScreen = ({
   caseStudy,
   onBackPress,
 }: CaseStudyDetailsScreenProps) => {
-  const [previewImage, setPreviewImage] = React.useState<CaseStudyImage | null>(
-    null,
-  );
-
   const getImagesForSection = (sectionId: CaseStudySectionId) =>
     caseStudy.images?.filter(image => image.sectionId === sectionId);
 
@@ -115,52 +101,38 @@ const CaseStudyDetailsScreen = ({
           title="Problem"
           body={caseStudy.problem}
           images={getImagesForSection('problem')}
-          onImagePress={setPreviewImage}
         />
         <DetailSection
           title="Solution"
           body={caseStudy.solution}
           images={getImagesForSection('solution')}
-          onImagePress={setPreviewImage}
         />
         <DetailSection
           title="How I Built It"
           images={getImagesForSection('howIBuiltIt')}
           items={caseStudy.howIBuiltIt}
-          onImagePress={setPreviewImage}
         />
         <DetailSection
           title="What I Made"
           images={getImagesForSection('whatIMade')}
           items={caseStudy.whatIMade}
-          onImagePress={setPreviewImage}
         />
         <DetailSection
           title="Challenges"
           images={getImagesForSection('challenges')}
           items={caseStudy.challenges}
-          onImagePress={setPreviewImage}
         />
         <DetailSection
           title="Outcome"
           body={caseStudy.outcome}
           images={getImagesForSection('outcome')}
-          onImagePress={setPreviewImage}
         />
         <DetailSection
           title="Stack"
           images={getImagesForSection('stack')}
           items={caseStudy.stack}
-          onImagePress={setPreviewImage}
         />
       </ScrollView>
-
-      <ImagePreviewModal
-        caption={previewImage?.caption}
-        imageUrl={previewImage?.imageUrl}
-        onClose={() => setPreviewImage(null)}
-        visible={Boolean(previewImage)}
-      />
     </ScreenWrapper>
   );
 };

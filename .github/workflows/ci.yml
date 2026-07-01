@@ -1,0 +1,38 @@
+name: CI
+
+# This workflow runs anytime a PR targeting the main branch is opened, synchronized, or reopened
+on:
+  pull_request_target:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+  
+jobs:
+  quality:
+    name: Lint, format, and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 26.4.0
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Check formatting
+        run: yarn format
+
+      - name: Test
+        run: yarn test --ci --watchman=false

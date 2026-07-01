@@ -13,7 +13,9 @@ const ScreenWrapper = ({ children }: ScreenWrapperProps) => (
   <SafeAreaInsetsView style={styles.container}>
     <View style={styles.content}>{children}</View>
     <View style={styles.footerPanel}>
-      <Text style={styles.version}>Version {PKG_JSON.version}</Text>
+      <Text style={styles.version}>
+        Version {PKG_JSON.version} ({PKG_JSON.versionCode})
+      </Text>
     </View>
   </SafeAreaInsetsView>
 );
