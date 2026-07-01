@@ -7,10 +7,11 @@ import SafeAreaInsetsView from './SafeAreaInsetsView';
 
 type ScreenWrapperProps = {
   children: React.ReactNode;
+  testID?: string;
 };
 
-const ScreenWrapper = ({ children }: ScreenWrapperProps) => (
-  <SafeAreaInsetsView style={styles.container}>
+const ScreenWrapper = ({ children, testID }: ScreenWrapperProps) => (
+  <SafeAreaInsetsView style={styles.container} testID={testID}>
     <View style={styles.content}>{children}</View>
     <View style={styles.footerPanel}>
       <Text style={styles.version}>
