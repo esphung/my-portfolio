@@ -5,6 +5,7 @@ import ExampleList, { ExampleListItem } from '../components/ExampleList';
 import { portfolioSections } from '../data/portfolioSections';
 import SafeAreaInsetsView from '../components/SafeAreaInsetsView';
 import { colors } from '../theme/colors';
+import PKG_JSON from '../../package.json';
 
 type HomeScreenProps = {
   onProjectPress: (project: ExampleListItem) => void;
@@ -19,6 +20,7 @@ const HomeScreen = ({ onProjectPress }: HomeScreenProps) => {
         onItemPress={onProjectPress}
         style={styles.list}
       />
+      <Text style={styles.version}>Version {PKG_JSON.version}</Text>
     </SafeAreaInsetsView>
   );
 };
@@ -37,6 +39,13 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingTop: 20,
+  },
+  version: {
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    color: colors.text,
+    fontSize: 14,
+    textAlign: 'center',
   },
 });
 
