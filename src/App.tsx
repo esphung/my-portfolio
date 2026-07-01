@@ -1,12 +1,30 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { ExampleListItem } from './components/ExampleList';
+import DetailsScreen from './screens/DetailsScreen';
 import HomeScreen from './screens/HomeScreen';
+import { colors } from './theme/colors';
 
 const App = () => {
+  const [selectedProject, setSelectedProject] =
+    React.useState<ExampleListItem | null>(null);
+
   return (
     <SafeAreaProvider>
-      <HomeScreen />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={colors.primaryDeep}
+      />
+      {selectedProject ? (
+        <DetailsScreen
+          project={selectedProject}
+          onBackPress={() => setSelectedProject(null)}
+        />
+      ) : (
+        <HomeScreen onProjectPress={setSelectedProject} />
+      )}
     </SafeAreaProvider>
   );
 };

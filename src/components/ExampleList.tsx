@@ -10,6 +10,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { colors } from '../theme/colors';
+
 export type ExampleListItem = {
   id: string;
   title: string;
@@ -17,7 +19,16 @@ export type ExampleListItem = {
   thumbnailUrl?: string;
   appStoreUrl?: string;
   playStoreUrl?: string;
+  detailsSections?: ProjectDetailsSection[];
   children?: ExampleListItem[];
+};
+
+export type ProjectDetailsSection = {
+  id: string;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  items?: string[];
 };
 
 type ExampleListProps = {
@@ -27,7 +38,9 @@ type ExampleListProps = {
 };
 
 const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
-  const [expandedItemIds, setExpandedItemIds] = useState<string[]>([]);
+  const [expandedItemIds, setExpandedItemIds] = useState<string[]>(() =>
+    items.filter(item => item.children?.length).map(item => item.id),
+  );
 
   const toggleItem = (itemId: string) => {
     setExpandedItemIds(currentItemIds =>
@@ -55,31 +68,31 @@ const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
             </Text>
           ) : null}
         </View>
-      <Text style={styles.description}>{item.description}</Text>
-      {hasChildren && isExpanded ? (
-        <View style={styles.childList}>
-          {item.children?.map(child => (
-            <Pressable
-              accessibilityRole={onItemPress ? 'button' : undefined}
-              key={child.id}
-              onPress={() => onItemPress?.(child)}
-              style={styles.childItem}>
-              {child.thumbnailUrl ? (
-                <Image
-                  source={{ uri: child.thumbnailUrl }}
-                  style={styles.childThumbnail}
-                />
-              ) : null}
-              <View style={styles.childContent}>
-                <Text style={styles.childTitle}>{child.title}</Text>
-                <Text numberOfLines={3} style={styles.childDescription}>
-                  {child.description}
-                </Text>
-              </View>
-            </Pressable>
-          ))}
-        </View>
-      ) : null}
+        <Text style={styles.description}>{item.description}</Text>
+        {hasChildren && isExpanded ? (
+          <View style={styles.childList}>
+            {item.children?.map(child => (
+              <Pressable
+                accessibilityRole={onItemPress ? 'button' : undefined}
+                key={child.id}
+                onPress={() => onItemPress?.(child)}
+                style={styles.childItem}>
+                {child.thumbnailUrl ? (
+                  <Image
+                    source={{ uri: child.thumbnailUrl }}
+                    style={styles.childThumbnail}
+                  />
+                ) : null}
+                <View style={styles.childContent}>
+                  <Text style={styles.childTitle}>{child.title}</Text>
+                  <Text numberOfLines={3} style={styles.childDescription}>
+                    {child.description}
+                  </Text>
+                </View>
+              </Pressable>
+            ))}
+          </View>
+        ) : null}
       </Pressable>
     );
   };
@@ -110,7 +123,9 @@ const styles = StyleSheet.create({
   },
   item: {
     borderRadius: 8,
-    backgroundColor: '#ffffff',
+    borderColor: colors.border,
+    borderWidth: 1,
+    backgroundColor: colors.surface,
     padding: 16,
   },
   itemHeader: {
@@ -121,18 +136,18 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    color: '#111827',
+    color: colors.text,
     fontSize: 18,
     fontWeight: '700',
   },
   accordionIndicator: {
-    color: '#2563eb',
+    color: colors.primary,
     fontSize: 13,
     fontWeight: '700',
   },
   description: {
     marginTop: 6,
-    color: '#4b5563',
+    color: colors.textMuted,
     fontSize: 14,
     lineHeight: 20,
   },
@@ -144,34 +159,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    borderLeftColor: '#2563eb',
+    borderLeftColor: colors.accent,
     borderLeftWidth: 3,
-    backgroundColor: '#eff6ff',
+    backgroundColor: colors.surfaceTint,
     padding: 12,
   },
   childThumbnail: {
     width: 48,
     height: 48,
     borderRadius: 10,
-    backgroundColor: '#dbeafe',
+    backgroundColor: colors.surfaceStrong,
   },
   childContent: {
     flex: 1,
   },
   childTitle: {
-    color: '#1e3a8a',
+    color: colors.primaryDark,
     fontSize: 16,
     fontWeight: '700',
   },
   childDescription: {
     marginTop: 4,
-    color: '#1f2937',
+    color: colors.textMuted,
     fontSize: 13,
     lineHeight: 18,
   },
   childUrl: {
     marginTop: 6,
-    color: '#2563eb',
+    color: colors.primary,
     fontSize: 12,
   },
   separator: {
@@ -182,7 +197,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   emptyText: {
-    color: '#4b5563',
+    color: colors.textMuted,
     fontSize: 16,
   },
 });

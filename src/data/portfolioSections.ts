@@ -4,7 +4,7 @@ export const portfolioSections: ExampleListItem[] = [
   {
     id: 'projects',
     title: 'Projects',
-    description: 'Apps contributed to that are available in the App Store and Play Store.',
+    description: 'Projects showcasing various applications and tools developed.',
     children: [
       {
         id: 'thryvpay',
@@ -16,6 +16,72 @@ export const portfolioSections: ExampleListItem[] = [
         appStoreUrl: 'https://apps.apple.com/us/app/thryvpay/id1554576474',
         playStoreUrl:
           'https://play.google.com/store/search?q=ThryvPay&c=apps',
+        detailsSections: [
+          // {
+          //   id: 'features',
+          //   title: 'Features',
+          //   items: [
+          //     'Display transaction history, including payment details and customer information.',
+          //     'Accept payments via Tap to Pay or card reader.',
+          //     'Send invoices to customers via SMS and email.',
+          //   ],
+          // },
+          {
+            id: 'contributions',
+            title: 'Contributions',
+            items: [
+              'Handled all App Store submissions, updates, and metadata management, ensuring compliance with Apple\'s guidelines and smooth release processes.',
+              'Architected state management using Zustand; combined stores and slices to create a centralized state management.',
+              'Built bridge for native Stripe iOS and Android SDKs to enable Tap to Pay and card reader functionality.',
+              'Developed backend services with Express, Node.js and MySQL for recording transactions, managing payment flows, and sending invoices to customers via SMS and email.',
+              'Added push notifcations using OneSignal, Apple Push Notification Service (APNs) and Firebase for alerting users about important updates and payments.',
+              'Built onboarding flow for new user registration that required tokenized PCI-compliant payment information and coordinated with the web team to synchronize application data and user experiences across platforms.',
+              'Implemented Plaid for linking users\' bank accounts allowing users to withdraw funds directly to their bank accounts.',
+              'Created automated deployment process using Fastlane, App Store Connect API and GitHub Actions, streamlining the release workflow for both iOS and Android platforms.',
+              'Implemented Sentry and Datadog for real-time error tracking, performance monitoring and visibility into application health.',
+              'Implemented Maestro for end-to-end (E2E) testing',
+              'Implemented CodePush for delivery of instant updates over the air without requiring app store submissions.',
+              'Implemented SSO (Single Sign-On) using Auth0, enabling users to authenticate seamlessly across different platforms and services within the Thryv ecosystem.',
+              'Mentored junior developers on the mobile app team.',
+              'Created themed UI components and design systems in Storybook, ensuring consistency and reusability across the application.',
+              'Collaborated with cross-functional teams including design, backend, and web teams to ensure cohesive user experiences and alignment on project goals.',
+            ],
+          },
+                    {
+            id: 'technologies',
+            title: 'Technologies Used',
+            items: [
+              'React Native',
+              'TypeScript',
+              'Stripe iOS and Android SDKs',
+              'Plaid',
+              'Auth0',
+              'Fastlane',
+              'GitHub Actions',
+              'Maestro',
+              'Sentry',
+              'Datadog',
+              'CodePush',
+              'React Navigation',
+              'Zustand',
+              'OneSignal',
+              'Firebase',
+              'Apple Push Notification Service (APNs)',
+              'AWS',
+              'Google Play Services',
+              'App Store Connect',
+              'MySQL',
+              'Express',
+              'Node.js',
+              'Swift',
+              'Objective-C',
+              'Kotlin',
+              'Java',
+              'Gradle',
+              'Storybook',
+            ],
+          },
+        ],
       },
       {
         id: 'thryv-command-center',
@@ -27,6 +93,60 @@ export const portfolioSections: ExampleListItem[] = [
         appStoreUrl: 'https://apps.apple.com/us/app/thryv-command-center/id1672665968',
         playStoreUrl:
           'https://play.google.com/store/search?q=Thryv%20Command%20Center&c=apps',
+
+        detailsSections: [
+          // {
+          //   id: 'features',
+          //   title: 'Features',
+          //   items: [
+          //     'Centralized inbox for messages across email, social media, phone and WebChat.',
+          //     'Voice and video calls with a dedicated phone line for your business.',
+          //     'Manage team and customer chats in one spot no matter where you are.',
+          //   ],
+          // },
+          {
+            id: 'contributions',
+            title: 'Contributions',
+            items: [
+              'Created themed UI components using Storybook for consistent design and development across the mobile and web app.',
+              'Implemented state management using Zustand for predictable and centralized state management across the mobile app.',
+              'Implemented deep linking for connecting communications providers and other external services directly within the mobile app.',
+              'Implemented Pub/Sub event handling for real-time updates and notifications within the mobile app.',
+              'Implemented push notifications with Firebase and Apple Push Notification Service (APNs) for timely updates and engagement within the mobile app.',
+              'Created local data storage solutions using RealmDB for offline access and improved performance within the mobile app, storing messages, channels, and contacts locally on the device.',
+              'Mentored junior developers and conducted code reviews to ensure code quality and adherence to best practices within the mobile app development team.',
+              'Added authentication features for secure user access within the mobile app, including login, registration, and password management functionalities.',
+              'Handled App Store review process and updates for the mobile app, ensuring compliance with App Store guidelines and timely release of new features and bug fixes.',
+              'Automated deployment processes for the mobile app using GitHub Actions, ensuring efficient and reliable delivery of new features and updates to users.',
+              'Implemented repository architecture for data management within the mobile app, ensuring a clean separation of concerns and maintainable code structure.',
+            ],
+          },
+          {
+            id: 'technologies',
+            title: 'Technologies Used',
+            items: [
+              'React Native',
+              'TypeScript',
+              'AWS',
+              'Zustand',
+              'GraphQL',
+              'Push Notifications',
+              'RealmDB',
+              'Repository Architecture',
+              'GitHub Actions',
+              'Deep Linking',
+              'Google Play Services',
+              'App Store',
+              'Firebase',
+              'Apple Push Notification Service (APNs)',
+              'App Store Connect',
+              'OneSignal',
+              'Fastlane',
+              'Apollo Client',
+              'Storybook'
+            ],
+          },
+        ]
       },
       {
         id: 'carrier-360',
@@ -38,6 +158,42 @@ export const portfolioSections: ExampleListItem[] = [
         appStoreUrl: 'https://apps.apple.com/us/app/carrier-360-by-j-b-hunt/id1097181984',
         playStoreUrl:
           'https://play.google.com/store/search?q=Carrier%20360%20J.B.%20Hunt&c=apps',
+        detailsSections: [
+          // {
+          //   id: 'features',
+          //   title: 'Features',
+          //   items: [
+          //     'Access J.B. Hunt\'s load board',
+          //     'Customize stop locations and routes',
+          //     'Navigate using Google Navigation SDK',
+          //   ],
+          // },
+          {
+            id: 'contributions',
+            title: 'Contributions',
+            items: [
+              'Implemented custom routing for stop locations',
+              'Implemented Google Places API for location search',
+              'Integrated Google Navigation SDK for in-app navigation',
+              'Introduced TypeScript for type safety and improved code maintainability',
+              'Built custom map components for visualizing stop locations along the route',
+            ],
+          },
+          {
+            id: 'technologies-used',
+            title: 'Technologies Used',
+            items: [
+              'React Native',
+              'Redux',
+              'TypeScript',
+              'JavaScript',
+              'Google Navigation SDK',
+              'Firebase',
+              'Google Maps SDK',
+              'Google Places API',
+            ],
+          },
+        ]
       },
       {
         id: 'financely',
@@ -48,6 +204,46 @@ export const portfolioSections: ExampleListItem[] = [
           'https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/71/3e/77/713e778e-1523-b6a1-2e25-9905ab35d555/AppIcon-1x_U007emarketing-0-7-0-0-85-220.png/100x100bb.jpg',
         appStoreUrl: 'https://apps.apple.com/us/app/financely/id1491309602',
         playStoreUrl: '',
+        detailsSections: [
+          {
+            id: 'contributions',
+            title: 'Contributions',
+            items: [
+              'Designed the database schema for tracking personal expenses and income',
+              'Implemented functionality for adding and removing transactions',
+              'Implemented functionality for editing transactions',
+              'Added tables and views for tracking personal expenses and income',
+              'Implemented functionality for categorizing transactions into custom categories',
+              'Implemented custom amount input for transactions',
+              'Created backend integration for syncing transactions using AWS Amplify',
+              'Implemented authentication using AWS Cognito',
+              'Implemented navigation using React Navigation',
+              'Designed and implemented the user interface for managing personal expenses',
+              'Provided vision and direction for the overall user experience and design of the app',
+              'Conducted user testing and gathered feedback to inform design decisions',
+              'Handled release processes for the app, including submission to the stores and managing updates',
+              'Maintained documentation for the app, including user guides and technical documentation',
+              'Handled decision-making for feature prioritization and roadmap planning',
+            ],
+          },
+          {
+            id: 'technologies',
+            title: 'Technologies Used',
+            items: [
+              'Expo',
+              'JavaScript',
+              'React Native',
+              'AWS Amplify',
+              'AWS Cognito',
+              'React Navigation',
+              'GraphQL',
+              'App Store',
+              'Google Play Store',
+              'AWS S3',
+              'App Store Connect API',
+            ],
+          }
+        ],
       },
       {
         id: 'booktix-scanner',
@@ -59,6 +255,29 @@ export const portfolioSections: ExampleListItem[] = [
         appStoreUrl: 'https://apps.apple.com/us/app/booktix-scanner/id6448060612',
         playStoreUrl:
           'https://play.google.com/store/search?q=BookTix%20Scanner&c=apps',
+        detailsSections: [
+          {
+            id: 'contributions',
+            title: 'Contributions',
+            items: [
+              'Addressed release approval process issues and ensured smooth deployment of the BookTix Scanner app.',
+              'Cleaned up and optimized the codebase for better performance and maintainability.',
+              'Collaborated with the product owner to release new features and updates in alignment with the BookTix Platform roadmap.',
+              'Addressed issues with card reader integration.',
+            ],
+          },
+          {
+            id: 'technologies',
+            title: 'Technologies',
+            items: [
+              'React Native',
+              'TypeScript',
+              'Google Play Services',
+              'Node.js',
+              'Stripe',
+            ],
+          },
+        ],
       },
       {
         id: 'va-health-and-benefits',
