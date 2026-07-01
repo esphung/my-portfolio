@@ -57,7 +57,7 @@ const HomeScreen = ({ onCaseStudyPress, onProjectPress }: HomeScreenProps) => {
   );
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper testID="home-screen">
       <Text style={styles.heading}>My Portfolio</Text>
       <ExampleList
         items={listSections}
