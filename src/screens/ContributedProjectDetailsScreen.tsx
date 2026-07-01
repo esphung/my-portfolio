@@ -11,13 +11,13 @@ import {
   View,
 } from 'react-native';
 
-import { ExampleListItem } from '../components/ExampleList';
 import ProjectSectionList from '../components/ProjectSectionList';
-import SafeAreaInsetsView from '../components/SafeAreaInsetsView';
+import ScreenWrapper from '../components/ScreenWrapper';
 import { colors } from '../theme/colors';
+import type { ContributedProject } from '../types/portfolio';
 
 type DetailsScreenProps = {
-  project: ExampleListItem;
+  project: ContributedProject;
   onBackPress: () => void;
 };
 
@@ -63,7 +63,10 @@ const openUrl = async (title: string, url: string, nativeUrl = url) => {
   }
 };
 
-const DetailsScreen = ({ project, onBackPress }: DetailsScreenProps) => {
+const ContributedProjectDetailsScreen = ({
+  project,
+  onBackPress,
+}: DetailsScreenProps) => {
   const appStoreUrl = project.appStoreUrl;
   const playStoreUrl = project.playStoreUrl;
   const [isDescriptionExpanded, setIsDescriptionExpanded] =
@@ -82,12 +85,13 @@ const DetailsScreen = ({ project, onBackPress }: DetailsScreenProps) => {
   };
 
   return (
-    <SafeAreaInsetsView style={styles.container}>
+    <ScreenWrapper>
       <View style={styles.header}>
         <Pressable
           accessibilityRole="button"
           onPress={onBackPress}
-          style={styles.backButton}>
+          style={styles.backButton}
+        >
           <Text style={styles.backButtonText}>Back</Text>
         </Pressable>
         <Text numberOfLines={1} style={styles.headerTitle}>
@@ -103,10 +107,12 @@ const DetailsScreen = ({ project, onBackPress }: DetailsScreenProps) => {
         <Pressable
           accessibilityRole={isDescriptionExpanded ? 'button' : undefined}
           disabled={!isDescriptionExpanded}
-          onPress={() => setIsDescriptionExpanded(false)}>
+          onPress={() => setIsDescriptionExpanded(false)}
+        >
           <Text
             numberOfLines={isDescriptionExpanded ? undefined : 5}
-            style={styles.description}>
+            style={styles.description}
+          >
             {project.description}
           </Text>
         </Pressable>
@@ -115,19 +121,20 @@ const DetailsScreen = ({ project, onBackPress }: DetailsScreenProps) => {
           onPress={() =>
             setIsDescriptionExpanded(currentValue => !currentValue)
           }
-          style={styles.descriptionToggle}>
+          style={styles.descriptionToggle}
+        >
           <Text style={styles.descriptionToggleText}>
             {isDescriptionExpanded ? 'Show less' : '...more'}
           </Text>
         </Pressable>
-        <ProjectSectionList sections={project.detailsSections} />
 
         <View style={styles.actions}>
           {appStoreUrl ? (
             <Pressable
               accessibilityRole="link"
               onPress={handleAppStorePress}
-              style={styles.primaryButton}>
+              style={styles.primaryButton}
+            >
               <Text style={styles.primaryButtonText}>App Store</Text>
             </Pressable>
           ) : null}
@@ -135,21 +142,20 @@ const DetailsScreen = ({ project, onBackPress }: DetailsScreenProps) => {
             <Pressable
               accessibilityRole="link"
               onPress={handlePlayStorePress}
-              style={styles.secondaryButton}>
+              style={styles.secondaryButton}
+            >
               <Text style={styles.secondaryButtonText}>Google Play</Text>
             </Pressable>
           ) : null}
         </View>
+
+        <ProjectSectionList sections={project.detailsSections} />
       </ScrollView>
-    </SafeAreaInsetsView>
+    </ScreenWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -174,7 +180,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     flex: 1,
-    color: colors.textOnDark,
+    color: colors.text,
     fontSize: 18,
     fontWeight: '800',
   },
@@ -241,4 +247,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen;
+export default ContributedProjectDetailsScreen;

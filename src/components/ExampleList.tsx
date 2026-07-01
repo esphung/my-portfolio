@@ -1,45 +1,35 @@
 import React, { useState } from 'react';
+import type { ListRenderItem, ViewStyle } from 'react-native';
 import {
   FlatList,
   Image,
-  ListRenderItem,
   Pressable,
   StyleSheet,
   Text,
   View,
-  ViewStyle,
 } from 'react-native';
 
 import { colors } from '../theme/colors';
-
-export type ExampleListItem = {
-  id: string;
-  title: string;
-  description: string;
-  thumbnailUrl?: string;
-  appStoreUrl?: string;
-  playStoreUrl?: string;
-  detailsSections?: ProjectDetailsSection[];
-  children?: ExampleListItem[];
-};
-
-export type ProjectDetailsSection = {
-  id: string;
-  title: string;
-  description?: string;
-  imageUrl?: string;
-  items?: string[];
-};
+import type { CaseStudy, ContributedProject } from '../types/portfolio';
 
 type ExampleListProps = {
-  items: ExampleListItem[];
-  onItemPress?: (item: ExampleListItem) => void;
+  items: ContributedProject[];
+  ListFooterComponent?: React.ComponentType | React.ReactElement | null;
+  onCaseStudyPress?: (caseStudy: CaseStudy) => void;
+  onItemPress?: (item: ContributedProject) => void;
   style?: ViewStyle;
 };
 
-const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
+const ExampleList = ({
+  items,
+  ListFooterComponent,
+  onCaseStudyPress,
+  onItemPress,
+  style,
+}: ExampleListProps) => {
   const [expandedItemIds, setExpandedItemIds] = useState<string[]>(() =>
-    items.filter(item => item.children?.length).map(item => item.id),
+    // items.filter(item => item.children?.length).map(item => item.id),
+    [],
   );
 
   const toggleItem = (itemId: string) => {
@@ -50,16 +40,25 @@ const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
     );
   };
 
-  const renderItem: ListRenderItem<ExampleListItem> = ({ item }) => {
+  const renderItem: ListRenderItem<ContributedProject> = ({ item }) => {
     const hasChildren = Boolean(item.children?.length);
     const isExpanded = expandedItemIds.includes(item.id);
+    const handlePress = (selectedItem: ContributedProject) => {
+      if (selectedItem.caseStudy) {
+        onCaseStudyPress?.(selectedItem.caseStudy);
+        return;
+      }
+
+      onItemPress?.(selectedItem);
+    };
 
     return (
       <Pressable
         accessibilityRole="button"
         accessibilityState={hasChildren ? { expanded: isExpanded } : undefined}
-        onPress={() => (hasChildren ? toggleItem(item.id) : onItemPress?.(item))}
-        style={styles.item}>
+        onPress={() => (hasChildren ? toggleItem(item.id) : handlePress(item))}
+        style={styles.item}
+      >
         <View style={styles.itemHeader}>
           <Text style={styles.title}>{item.title}</Text>
           {hasChildren ? (
@@ -73,10 +72,13 @@ const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
           <View style={styles.childList}>
             {item.children?.map(child => (
               <Pressable
-                accessibilityRole={onItemPress ? 'button' : undefined}
+                accessibilityRole={
+                  onItemPress || onCaseStudyPress ? 'button' : undefined
+                }
                 key={child.id}
-                onPress={() => onItemPress?.(child)}
-                style={styles.childItem}>
+                onPress={() => handlePress(child)}
+                style={styles.childItem}
+              >
                 {child.thumbnailUrl ? (
                   <Image
                     source={{ uri: child.thumbnailUrl }}
@@ -104,6 +106,7 @@ const ExampleList = ({ items, onItemPress, style }: ExampleListProps) => {
       renderItem={renderItem}
       contentContainerStyle={[styles.content, style]}
       ItemSeparatorComponent={ItemSeparator}
+      ListFooterComponent={ListFooterComponent}
       ListEmptyComponent={EmptyList}
     />
   );

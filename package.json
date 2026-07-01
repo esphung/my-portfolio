@@ -1,14 +1,18 @@
 {
   "name": "MyPortfolio",
-  "version": "0.0.2",
-  "versionCode": 2,
+  "version": "0.0.3",
+  "versionCode": 3,
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "lint": "eslint .",
-    "start": "react-native start --client-logs",
-    "test": "jest"
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix",
+    "start": "npx react-native start --client-logs",
+    "test": "npx jest",
+    "format": "npx prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\" \"*.{js,json}\"",
+    "format:fix": "npx prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\" \"*.{js,json}\"",
+    "ci": "yarn lint && yarn format && yarn test"
   },
   "dependencies": {
     "react": "19.2.3",

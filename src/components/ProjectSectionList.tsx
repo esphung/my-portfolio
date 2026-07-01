@@ -1,14 +1,16 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { ProjectDetailsSection } from './ExampleList';
 import { colors } from '../theme/colors';
+import type { ContributedProjectDetailsSection } from '../types/portfolio';
 
 type ProjectSectionListProps = {
-  sections?: ProjectDetailsSection[];
+  sections?: ContributedProjectDetailsSection[];
 };
 
-const getUniqueTechnologyItems = (section: ProjectDetailsSection) => {
+const getUniqueTechnologyItems = (
+  section: ContributedProjectDetailsSection,
+) => {
   if (section.title !== 'Technologies Used') {
     return section.items;
   }
@@ -35,7 +37,9 @@ const ProjectSectionList = ({ sections = [] }: ProjectSectionListProps) => {
   const toggleSection = (sectionId: string) => {
     setExpandedSectionIds(currentSectionIds =>
       currentSectionIds.includes(sectionId)
-        ? currentSectionIds.filter(currentSectionId => currentSectionId !== sectionId)
+        ? currentSectionIds.filter(
+            currentSectionId => currentSectionId !== sectionId,
+          )
         : [...currentSectionIds, sectionId],
     );
   };
@@ -56,7 +60,8 @@ const ProjectSectionList = ({ sections = [] }: ProjectSectionListProps) => {
             accessibilityState={{ expanded: isExpanded }}
             key={section.id}
             onPress={() => toggleSection(section.id)}
-            style={styles.section}>
+            style={styles.section}
+          >
             <View style={styles.header}>
               <Text style={styles.title}>{section.title}</Text>
               <Text style={styles.accordionIndicator}>
@@ -67,7 +72,10 @@ const ProjectSectionList = ({ sections = [] }: ProjectSectionListProps) => {
             {isExpanded ? (
               <View style={styles.sectionContent}>
                 {section.imageUrl ? (
-                  <Image source={{ uri: section.imageUrl }} style={styles.image} />
+                  <Image
+                    source={{ uri: section.imageUrl }}
+                    style={styles.image}
+                  />
                 ) : null}
                 {section.description ? (
                   <Text style={styles.description}>{section.description}</Text>
