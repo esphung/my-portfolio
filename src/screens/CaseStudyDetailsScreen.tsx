@@ -28,12 +28,7 @@ type DetailSectionProps = {
   items?: string[];
 };
 
-const DetailSection = ({
-  title,
-  body,
-  images,
-  items,
-}: DetailSectionProps) => (
+const DetailSection = ({ title, body, images, items }: DetailSectionProps) => (
   <View style={styles.section}>
     <Text style={styles.sectionTitle}>{title}</Text>
     {body ? <Text style={styles.body}>{body}</Text> : null}
@@ -50,10 +45,7 @@ const DetailSection = ({
     {images?.length ? (
       <View style={styles.imageList}>
         {images.map(image => (
-          <View
-            key={image.id}
-            style={styles.imageFrame}
-          >
+          <View key={image.id} style={styles.imageFrame}>
             <Image
               source={{ uri: image.imageUrl }}
               style={[
