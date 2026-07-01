@@ -4,7 +4,7 @@ export const portfolioSections: ExampleListItem[] = [
   {
     id: 'projects',
     title: 'Projects',
-    description: 'Highlight featured work with links, images, and outcomes.',
+    description: 'Apps contributed to that are available in the App Store and Play Store.',
     children: [
       {
         id: 'thryvpay',
@@ -73,79 +73,73 @@ export const portfolioSections: ExampleListItem[] = [
       },
     ],
   },
-  {
-    id: 'case-studies',
-    title: 'Case Studies',
-    description:
-      'Deeper writeups that show product context, technical decisions, and engineering tradeoffs.',
-    children: [
-      {
-        id: 'local-first-sync',
-        title: 'Local-First Sync',
-        description:
-          'How I structure mobile data flows for offline use, local persistence, remote synchronization, conflict handling, and retry behavior.',
-      },
-      {
-        id: 'payments-and-reliability',
-        title: 'Payments & Reliability',
-        description:
-          'A look at payment-oriented mobile flows, validation, loading states, error handling, and production-safe user feedback.',
-      },
-      {
-        id: 'mobile-architecture',
-        title: 'Mobile Architecture',
-        description:
-          'How I separate screens, reusable components, services, API clients, shared models, and app-level providers in React Native projects.',
-      },
-    ],
-  },
-  {
-    id: 'examples',
-    title: 'Examples',
-    description: 'Showcase small builds, code snippets, experiments, and ideas in progress.',
-    children: [
-      {
-        id: 'singleton-class',
-        title: 'Singleton Class',
-        description:
-          'A TypeScript example showing one shared instance for app-wide settings or services.',
-      },
-      {
-        id: 'pubsub',
-        title: 'PubSub',
-        description:
-          'A publish-subscribe example for decoupling events between independent parts of an app.',
-      },
-      {
-        id: 'api-client',
-        title: 'API Client',
-        description:
-          'A typed request wrapper for auth headers, response parsing, request failures, and reusable endpoint calls.',
-      },
-      {
-        id: 'repository-pattern',
-        title: 'Repository Pattern',
-        description:
-          'A data layer example that keeps screens separate from local storage, remote APIs, and sync decisions.',
-      },
-      {
-        id: 'optimistic-updates',
-        title: 'Optimistic Updates',
-        description:
-          'A UI flow that updates immediately, rolls back on failure, and keeps users informed while requests finish.',
-      },
-      {
-        id: 'offline-queue',
-        title: 'Offline Queue',
-        description:
-          'A small workflow for storing actions offline and replaying them when the app reconnects.',
-      },
-      {
-        id: 'feature-flags',
-        title: 'Feature Flags',
-        description:
-          'A config-driven pattern for enabling, disabling, and testing features without scattering conditionals.',
-      },
-    ],
-  },
+  // {
+  //   id: 'case-studies',
+  //   title: 'Case Studies',
+  //   description:
+  //     'Deeper writeups that show product context, technical decisions, and engineering tradeoffs.',
+  //   children: [
+  //     {
+  //       id: 'local-first-sync',
+  //       title: 'Local-First Sync',
+  //       description:
+  //         'How I structure mobile data flows for offline use, local persistence, remote synchronization, conflict handling, and retry behavior.',
+  //     },
+  //     {
+  //       id: 'mobile-architecture',
+  //       title: 'Mobile Architecture',
+  //       description:
+  //         'How I separate screens, reusable components, services, API clients, shared models, and app-level providers in React Native projects.',
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 'examples',
+  //   title: 'Examples',
+  //   description: 'Showcase small builds, code snippets, experiments, and ideas in progress.',
+  //   children: [
+  //     {
+  //       id: 'singleton-class',
+  //       title: 'Singleton Class',
+  //       description:
+  //         'A TypeScript example showing one shared instance for app-wide settings or services.',
+  //     },
+  //     {
+  //       id: 'pubsub',
+  //       title: 'PubSub',
+  //       description:
+  //         'A publish-subscribe example for decoupling events between independent parts of an app.',
+  //     },
+  //     {
+  //       id: 'api-client',
+  //       title: 'API Client',
+  //       description:
+  //         'A typed request wrapper for auth headers, response parsing, request failures, and reusable endpoint calls.',
+  //     },
+  //     {
+  //       id: 'repository-pattern',
+  //       title: 'Repository Pattern',
+  //       description:
+  //         'A data layer example that keeps screens separate from local storage, remote APIs, and sync decisions.',
+  //     },
+  //     {
+  //       id: 'optimistic-updates',
+  //       title: 'Optimistic Updates',
+  //       description:
+  //         'A UI flow that updates immediately, rolls back on failure, and keeps users informed while requests finish.',
+  //     },
+  //     {
+  //       id: 'offline-queue',
+  //       title: 'Offline Queue',
+  //       description:
+  //         'A small workflow for storing actions offline and replaying them when the app reconnects.',
+  //     },
+  //     {
+  //       id: 'feature-flags',
+  //       title: 'Feature Flags',
+  //       description:
+  //         'A config-driven pattern for enabling, disabling, and testing features without scattering conditionals.',
+  //     },
+  //   ],
+  // },
 ];
