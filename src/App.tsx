@@ -14,8 +14,8 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <StatusBar
-        barStyle="light-content"
-        backgroundColor={colors.primaryDeep}
+        barStyle="dark-content"
+        backgroundColor={colors.background}
       />
       {selectedProject ? (
         <DetailsScreen

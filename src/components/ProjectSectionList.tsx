@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 28,
   },
   section: {
-    borderRadius: 8,
+    borderRadius: 6,
     borderColor: colors.border,
     borderWidth: 1,
     backgroundColor: colors.surface,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     aspectRatio: 16 / 9,
-    borderRadius: 8,
+    borderRadius: 6,
     backgroundColor: colors.surfaceStrong,
   },
   title: {
